@@ -1,78 +1,146 @@
 # 🌾 FarmSense AI
 
-📌 About
-FarmSense AI is a full-stack web application that empowers Indian farmers with AI-driven tools for crop disease detection, multilingual farming advice, weather-based recommendations, and government scheme discovery.
-
-✨ Features
-
-🔬 Crop Disease Scanner
-
-Upload a photo of any crop leaf
-AI identifies the disease, confidence level, and severity
-Provides organic and chemical treatment options
-Powered by Llama 4 Scout vision model via Groq
-
-🤖 AI Chatbot
-
-Farming advice in 8 Indian languages
-
-English, Hindi, Malayalam, Tamil, Telugu, Kannada, Bengali, Marathi
-
-
-Voice input support using Web Speech API
-Multi-turn conversation with context memory
-Quick reply suggestions after every response
-Powered by Llama 3.3 70B via Groq
-
-🌤️ Weather Advisory
-
-Real-time weather data based on location
-Crop-specific farming recommendations
-Irrigation and pest risk alerts
-
-📋 Government Schemes Finder
-
-Input your state, land size, and crop type
-Instantly matched to eligible government schemes
-Covers PM-KISAN, PMFBY, KCC, PMKSY, SMAM, e-NAM and more
-AI-generated personalized eligibility message
+> AI-powered smart farming assistant for Indian farmers 
 
 ---
-🛠️ Tech Stack
-LayerTechnologyFrontendReact 18, Vite, Tailwind CSSBackendFastAPI, Python 3.11+AI - TextGroq API — Llama 3.3 70B VersatileAI - VisionGroq API — Llama 4 Scout 17BDatabaseSupabase (PostgreSQL)HTTP ClientAxiosIconsLucide React
 
-## 🗂️ Project Structure
+## 📌 About
 
-```
+**FarmSense AI** is a full-stack web application designed to empower Indian farmers with intelligent, AI-driven agricultural assistance.
+
+The platform provides:
+
+- 🔬 Crop disease detection using AI vision models
+- 🤖 Multilingual farming chatbot with voice support
+- 🌤️ Hyperlocal weather-based farming advice
+- 📋 Government scheme eligibility finder
+
+Built with modern web technologies and powered by advanced LLMs from Groq, FarmSense AI aims to make digital farming assistance accessible in regional Indian languages.
+
+---
+
+# ✨ Features
+
+## 🔬 Crop Disease Scanner
+
+Upload a photo of a crop leaf and let AI identify possible diseases instantly.
+
+### Features
+-  Upload crop leaf images
+-  AI-powered disease detection
+-  Confidence score & severity analysis
+-  Organic treatment suggestions
+-  Chemical treatment recommendations
+-  Powered by **Llama 4 Scout Vision Model**
+
+---
+
+## 🤖 AI Farming Chatbot
+
+An intelligent multilingual farming assistant for everyday agricultural guidance.
+
+### Features
+- 🌐 Supports **8 Indian Languages**
+  - English
+  - Hindi
+  - Malayalam
+  - Tamil
+  - Telugu
+  - Kannada
+  - Bengali
+  - Marathi
+
+- Voice input support using **Web Speech API**
+- Multi-turn conversation with context memory
+- Quick reply suggestions
+- Powered by **Llama 3.3 70B via Groq**
+
+---
+
+## 🌤️ Weather Advisory
+
+Get real-time weather updates and crop-specific farming recommendations.
+
+### Features
+- Location-based weather data
+- Hyperlocal weather forecasts
+- Irrigation recommendations
+- Pest & disease risk alerts
+- Crop-specific farming suggestions
+
+---
+
+## 📋 Government Schemes Finder
+
+Discover government schemes based on your farming profile.
+
+### Features
+- Personalized scheme recommendations
+- Crop-specific eligibility matching
+- State-based filtering
+- Land-size eligibility checking
+- AI-generated eligibility explanations
+
+### Supported Schemes
+- PM-KISAN
+- PMFBY
+- KCC
+- PMKSY
+- SMAM
+- e-NAM
+- and more...
+
+---
+
+# 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React 18, Vite, Tailwind CSS |
+| Backend | FastAPI, Python 3.11+ |
+| AI (Text) | Groq API — Llama 3.3 70B Versatile |
+| AI (Vision) | Groq API — Llama 4 Scout 17B |
+| Database | Supabase (PostgreSQL) |
+| HTTP Client | Axios |
+| Icons | Lucide React |
+
+---
+
+# 🗂️ Project Structure
+
+```bash
 farmsense/
-├── frontend/          # React (Vite) + Tailwind CSS
+├── frontend/                     # React + Vite + Tailwind CSS
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── ChatBot.jsx         # AI voice/text chatbot
-│   │   │   ├── DiseaseScanner.jsx  # Crop photo upload & diagnosis
-│   │   │   ├── WeatherAdvisor.jsx  # Hyperlocal weather + advice
-│   │   │   ├── SchemesFinder.jsx   # Govt scheme matcher
+│   │   │   ├── ChatBot.jsx          # AI voice/text chatbot
+│   │   │   ├── DiseaseScanner.jsx   # Crop disease detection
+│   │   │   ├── WeatherAdvisor.jsx   # Weather recommendations
+│   │   │   ├── SchemesFinder.jsx    # Govt scheme matcher
 │   │   │   └── Navbar.jsx
 │   │   ├── App.jsx
 │   │   └── main.jsx
 │   ├── index.html
 │   └── package.json
 │
-├── backend/           # Python + FastAPI
-│   ├── main.py        # FastAPI app entry point
+├── backend/                      # FastAPI Backend
+│   ├── main.py                   # FastAPI entry point
 │   ├── routes/
-│   │   ├── disease.py      # Crop disease detection API
-│   │   ├── chat.py         # AI chatbot API
-│   │   ├── weather.py      # Weather advisory API
-│   │   └── schemes.py      # Govt schemes API
+│   │   ├── disease.py            # Disease detection API
+│   │   ├── chat.py               # Chatbot API
+│   │   ├── weather.py            # Weather advisory API
+│   │   └── schemes.py            # Govt schemes API
+│   │
 │   ├── services/
-│   │   ├── disease_ai.py   # TFLite / Gemini vision service
-│   │   ├── chat_ai.py      # LangGraph chatbot service
+│   │   ├── disease_ai.py         # Vision AI service
+│   │   ├── chat_ai.py            # LangGraph chatbot logic
 │   │   ├── weather_service.py
 │   │   └── schemes_service.py
+│   │
 │   ├── models/
-│   │   └── schemas.py      # Pydantic models
-│   ├── database.py         # Supabase client
+│   │   └── schemas.py            # Pydantic schemas
+│   │
+│   ├── database.py               # Supabase configuration
 │   └── requirements.txt
 │
 └── README.md
@@ -80,19 +148,145 @@ farmsense/
 
 ---
 
-## ⚙️ Setup Instructions
+# ⚙️ Installation & Setup
 
-### Backend
+## 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/deviparvathy-23/FARMSENSE_AI.git
+
+cd farmsense-ai
+```
+
+---
+
+# 🚀 Backend Setup
+
+## Install Dependencies
+
 ```bash
 cd backend
-pip install -r requirements.txt
 
-# Create .env file:
-GROQ_API_KEY=your Groq API key from console.groq.com
+pip install -r requirements.txt
+```
+
+---
+
+## Create `.env` File
+
+Create a `.env` file inside the `backend/` folder:
+
+```env
+GROQ_API_KEY=your_groq_api_key
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_anon_key
+```
 
+---
+
+## Run Backend Server
+
+```bash
 uvicorn main:app --reload --port 8000
 ```
 
+Backend runs on:
 
+```bash
+http://localhost:8000
+```
+
+---
+
+# 💻 Frontend Setup
+
+## Install Dependencies
+
+```bash
+cd frontend
+
+npm install
+```
+
+---
+
+## Start Frontend
+
+```bash
+npm run dev
+```
+
+Frontend runs on:
+
+```bash
+http://localhost:5173
+```
+
+---
+
+# 🔑 Environment Variables
+
+| Variable | Description |
+|---|---|
+| `GROQ_API_KEY` | API key from Groq |
+| `SUPABASE_URL` | Supabase project URL |
+| `SUPABASE_KEY` | Supabase anon/public key |
+
+---
+
+# 📡 API Endpoints
+
+| Endpoint | Description |
+|---|---|
+| `/disease` | Crop disease detection |
+| `/chat` | AI chatbot |
+| `/weather` | Weather recommendations |
+| `/schemes` | Government schemes finder |
+
+---
+
+# 🌍 Supported Languages
+
+- 🇮🇳 English
+- 🇮🇳 Hindi
+- 🇮🇳 Malayalam
+- 🇮🇳 Tamil
+- 🇮🇳 Telugu
+- 🇮🇳 Kannada
+- 🇮🇳 Bengali
+- 🇮🇳 Marathi
+
+---
+
+# 🔮 Future Improvements
+
+- 📱 Mobile app support
+- 🛰️ Satellite crop monitoring
+- 📈 Farm analytics dashboard
+- 🧾 Farmer profile management
+- 🔔 SMS/WhatsApp alerts
+- 🌾 Marketplace integration
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to your branch
+5. Open a Pull Request
+
+---
+
+# 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+# 👨‍💻 Authors
+
+Developed for Indian farmers.
