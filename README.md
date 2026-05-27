@@ -193,7 +193,7 @@ uvicorn main:app --reload --port 8000
 Backend runs on:
 
 ```bash
-http://localhost:8000
+https://farmsense-backend-ecyh.onrender.com
 ```
 
 ---
@@ -219,7 +219,7 @@ npm run dev
 Frontend runs on:
 
 ```bash
-http://localhost:5173
+https://farmsense-ai-three.vercel.app/
 ```
 
 ---
