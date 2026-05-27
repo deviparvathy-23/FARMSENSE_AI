@@ -260,16 +260,15 @@ http://localhost:5173
 
 # 🔮 Future Improvements
 
-- 📱 Mobile app support
-- 🛰️ Satellite crop monitoring
-- 📈 Farm analytics dashboard
-- 🧾 Farmer profile management
-- 🔔 SMS/WhatsApp alerts
-- 🌾 Marketplace integration
+- Mobile app support
+- Farm analytics dashboard
+- Farmer profile management
+- SMS/WhatsApp alerts
+- Marketplace integration
 
 ---
 
-# 🤝 Contributing
+# Contributing
 
 Contributions are welcome!
 
@@ -287,6 +286,6 @@ This project is licensed under the **MIT License**.
 
 ---
 
-# 👨‍💻 Authors
+# Authors
 
 Developed for Indian farmers.
