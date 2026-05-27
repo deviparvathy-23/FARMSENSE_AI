@@ -2,13 +2,12 @@ import os
 import httpx
 import json
 import re
-from google import genai
-from google.genai import types
+from groq import Groq
 from dotenv import load_dotenv
 from models.schemas import WeatherData, WeatherAdvice
 
 load_dotenv()
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY", ""))
+client = Groq(api_key=os.environ.get("GROQ_API_KEY", ""))
 
 OPEN_METEO_BASE = "https://api.open-meteo.com/v1/forecast"
 GEOCODE_BASE    = "https://nominatim.openstreetmap.org/reverse"
@@ -86,7 +85,7 @@ async def get_weather_and_advice(lat: float, lon: float, crop: str = "general") 
         forecast=forecast,
     )
 
-    # Generate farming advice using Gemini
+    # Generate farming advice using Groq
     advice_prompt = f"""
 You are a smart farming weather advisor for Indian farmers.
 
@@ -100,31 +99,30 @@ Current weather at {weather.location}:
 - 3-day rainfall: {daily['precipitation_sum']} mm
 - Crop: {crop}
 
-Based on this, give concise farming advice. Respond ONLY as JSON:
+Based on this, give concise farming advice. Respond ONLY as valid JSON with no extra text:
 {{
   "farming_advice": "2-3 sentences of specific practical advice for today",
-  "sowing_suitable": true/false,
-  "irrigation_needed": true/false,
+  "sowing_suitable": true,
+  "irrigation_needed": false,
   "alerts": ["any warnings like pest risk, frost, heavy rain etc"]
 }}
 """
 
     try:
-        ai_resp = client.models.generate_content(
-            model="gemini-2.5-flash-native-audio-latest",
-            contents=advice_prompt,
-            config=types.GenerateContentConfig(
-                max_output_tokens=500,
-                temperature=0.5,
-            ),
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[{"role": "user", "content": advice_prompt}],
+            max_tokens=500,
+            temperature=0.5,
+            response_format={"type": "json_object"},
         )
-        raw = ai_resp.text.strip()
+        raw = response.choices[0].message.content.strip()
         raw = re.sub(r"^```(?:json)?", "", raw).strip()
         raw = re.sub(r"```$", "", raw).strip()
         advice_data = json.loads(raw)
 
     except Exception as e:
-        print(f"Gemini weather advice error: {e}")
+        print(f"Groq weather advice error: {e}")
         advice_data = {
             "farming_advice": f"Current temperature is {temp}°C with {humidity}% humidity. {description}. Plan your farming activities accordingly.",
             "sowing_suitable": 40 <= humidity <= 80 and 15 <= temp <= 35,
