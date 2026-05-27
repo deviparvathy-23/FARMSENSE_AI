@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-800 font-sans;
+  }
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-farm-mid hover:bg-farm-dark text-white font-semibold px-5 py-2.5 rounded-xl
+           transition-all duration-200 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-farm-pale hover:bg-green-200 text-farm-dark font-semibold px-5 py-2.5 rounded-xl
+           transition-all duration-200 flex items-center gap-2;
+  }
+  .btn-amber {
+    @apply bg-farm-amber hover:bg-yellow-500 text-farm-dark font-semibold px-5 py-2.5 rounded-xl
+           transition-all duration-200 flex items-center gap-2;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 p-5;
+  }
+  .section-title {
+    @apply text-farm-dark font-bold text-xl mb-1;
+  }
+  .badge {
+    @apply text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #52B788; border-radius: 4px; }
+
+/* Chat bubble animation */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.chat-bubble { animation: fadeSlideUp 0.25s ease-out; }
+
+/* Spinner */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner { animation: spin 0.8s linear infinite; }
+
+/* Pulse for recording */
+@keyframes recordPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); }
+  50%       { box-shadow: 0 0 0 10px rgba(239,68,68,0); }
+}
+.recording { animation: recordPulse 1.2s ease-in-out infinite; }

@@ -1,0 +1,21 @@
+# Environment variables — NEVER push these
+.env
+.env.local
+.env.production
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
