@@ -1,10 +1,10 @@
-# 🌾 FarmSense AI — Full Stack System
+# 🌾 FarmSense AI
 
 📌 About
 FarmSense AI is a full-stack web application that empowers Indian farmers with AI-driven tools for crop disease detection, multilingual farming advice, weather-based recommendations, and government scheme discovery.
-Built as part of the 6-week IBM SkillsBuild AI Strategy & Business Intelligence Internship conducted by CSRBOX in association with AICTE (2 March 2026 – 12 April 2026).
 
 ✨ Features
+
 🔬 Crop Disease Scanner
 
 Upload a photo of any crop leaf
@@ -88,22 +88,11 @@ cd backend
 pip install -r requirements.txt
 
 # Create .env file:
-GEMINI_API_KEY=your_gemini_key
-OPENWEATHER_API_KEY=your_openweather_key
+GROQ_API_KEY=your Groq API key from console.groq.com
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_anon_key
 
 uvicorn main:app --reload --port 8000
 ```
 
-### Frontend
-```bash
-cd frontend
-npm install
-# Create .env file:
-VITE_API_URL=http://localhost:8000
-VITE_OPENWEATHER_KEY=your_openweather_key
-npm run dev
-```
 
----
